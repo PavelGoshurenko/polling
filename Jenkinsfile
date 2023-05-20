@@ -24,6 +24,10 @@ pipeline {
             }
         }
         stage('Deploy to prod') {
+            input {
+                message "Shall we deploy to prod?"
+                ok "Yes please!"
+            }
             steps {
                 sh 'ssh -o StrictHostKeyChecking=no deployment-user@192.168.56.4 "source venv/bin/activate; \
                 cd polling; \
